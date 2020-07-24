@@ -36,9 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.active{
-  background-color: rgb(235, 138, 48);
-  color: aliceblue;
-  padding: 5px 0px;
-}

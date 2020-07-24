@@ -1,0 +1,35 @@
+.layout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container {
+    width: 500px;
+    padding: 25px;
+    align-self: center;
+}
+.form-title {
+    text-align: center;
+    align-self: center;
+    color: black;
+    font-weight: bold ;
+    font-size: x-large;
+    width: 500px;
+    height: 300px;
+    background-color: var(--v-primary-color)
+}
+.form-view {
+    text-align: center;
+    align-self: center;
+    border-width: 10px;
+    border: 10px;
+    border-color: var(--v-primary-color);
+    
+}
+.form-link-text {
+    color: black;
+    font-weight: bold ;
+}

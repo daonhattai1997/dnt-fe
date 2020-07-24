@@ -1,32 +1,29 @@
-import React, {Component} from 'react'; 
+import React, {Component} from 'react';
 import * as Constants from "../common/CommonUtils";
-import axios from 'axios';
 // import { NavLink } from "react-router-dom";
 
-function Menu ({data, index}) {
+function Menu ({data}) {
 
-    if(index === data.length) return null;
+    const items = [];
 
-    return data.map(item => (
-        <React.Fragment key={item.menuId}>
-            <li className={item.menuType === "SUB_MENU" ? "nav-item has-treeview" : "nav-item"}>
-                <a href={data[index].menuUrl} className="nav-link">
-                    <p>{data[index].menuName}</p>
+    data.map((element, index) => {
+        items.push(
+            <li className="nav-item" key={element.menuId}>
+                <a href={element.menuUrl} className="nav-link">
+                    <p>{element.menuName}</p>
                 </a>
             </li>
-            <ul className="nav nav-treeview">
-                <Menu data={data} index={index+1} />
-            </ul>
-            
-        </React.Fragment>
-    ))
+        )
+    });
+
+    return items;
 }
 
 class SideNavPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             menus: []
         };
 
@@ -34,38 +31,48 @@ class SideNavPage extends Component {
     }
 
     componentDidMount() {
+        const requestOptions = {
+            method: 'GET',
+            headers: { 
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
+            // headers: new Headers({
+            //     Authorization: 'Bearer ' + localStorage.getItem("token"),
+            // }),
+            // body: JSON.stringify(
+            // { 
+            //     roleId: ''
+            // })
+        };
 
-    // fetch(Constants.SERVER + "/menu")
-    //         .then(response => response.json())
-    //         .then(data => this.setState({
-    //             menus: data 
-    //         })).catch(console.log);
-
-        axios.get(Constants.SERVER + "/menu")
-        .then(data => this.setState({ menus: data }))
-        .catch(() => console.log);
+        fetch(Constants.SERVER + "/menu", requestOptions)
+            .then(response => response.json())
+            .then(
+                data => this.setState({
+                    menus: data
+                })
+            ).catch(console.log);
     }
 
     render() {
         return (
-            <div className="sidebar">
-                <div className="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div className="image">
-                        <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+            <aside className="main-sidebar sidebar-dark-primary elevation-4">
+                <div className="sidebar">
+                    <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div className="info">
+                            <a href="/dashboard" className="d-block">Alexander Pierce</a>
+                        </div>
                     </div>
-                    <div className="info">
-                        <a href="#" className="d-block">Alexander Pierce</a>
-                    </div>
-                </div>
 
-                <nav className="mt-2">
-                    <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <Menu data={this.state.menus} index={0}/>
-                    </ul>
-                </nav>
-            </div>
+                    <nav className="mt-2">
+                        <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <Menu data={this.state.menus} />
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
         );
     }
-        
+
 }
 export default SideNavPage;

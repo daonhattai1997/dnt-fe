@@ -4,28 +4,36 @@ import './App.css';
 // import Sidebar from './components/Sidebar';
 // import Content from './components/Content';
 import SideNavPage from './components/SideNavPage';
-import Redirect from './components/Redirect';
+import Login from './components/Login';
+import MyRedirect from './module/Redirect';
+import NoMatch from './nomatch/NoMatch';
 // import Footer from './components/Footer';
-import { BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+
 
 function App() {
     return (
-        //<div className="App">
-            //<Header/>
-            //<SideNavPage/>
-            //<Sidebar/>
-            //<Content/>
-            //<Footer/>
-        //</div>
+    	<main>
+	    	<Switch>
+			  	<Route exact 	path="/" 				component={Login} />
+			  	<Route exact    path="/404"             component={NoMatch} />
+			  	<Route path="/home">
+			      	<div className="d-flex" id="wrapper">
+				        <SideNavPage />
+				        <div id="page-content-wrapper">
+				          <MyRedirect />
+				        </div>
+				    </div>
+			    </Route>
+			    <Route          path="*">
+		            <Redirect to="/404" />
+		        </Route>
 
-        <Router>
-	      <div className="d-flex" id="wrapper">
-	        <SideNavPage />
-	        <div id="page-content-wrapper">
-	          <Redirect />
-	        </div>
-	      </div>
-	    </Router>
+			</Switch>
+		</main>
+
+		        
     );
 
 

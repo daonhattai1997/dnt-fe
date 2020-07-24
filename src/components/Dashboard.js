@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function Dashboard() {
     return (
@@ -10,4 +10,5 @@ function Dashboard() {
         </div>
     );
 }
+
 export default Dashboard;
