@@ -35,14 +35,7 @@ class SideNavPage extends Component {
             method: 'GET',
             headers: { 
                 'Authorization': 'Bearer ' + localStorage.getItem("token")
-            },
-            // headers: new Headers({
-            //     Authorization: 'Bearer ' + localStorage.getItem("token"),
-            // }),
-            // body: JSON.stringify(
-            // { 
-            //     roleId: ''
-            // })
+            }
         };
 
         fetch(Constants.SERVER + "/menu", requestOptions)
