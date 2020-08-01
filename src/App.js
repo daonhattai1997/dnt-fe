@@ -7,6 +7,7 @@ import SideNavPage from './components/SideNavPage';
 import Login from './components/Login';
 import MyRedirect from './module/Redirect';
 import NoMatch from './nomatch/NoMatch';
+import Register from "./components/Register";
 // import Footer from './components/Footer';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ function App() {
 	    	<Switch>
 			  	<Route exact 	path="/" 				component={Login} />
 			  	<Route exact    path="/404"             component={NoMatch} />
+			  	<Route exact	path="/register"		component={Register} />
 			  	<Route path="/home">
 			      	<div className="d-flex" id="wrapper">
 				        <SideNavPage />

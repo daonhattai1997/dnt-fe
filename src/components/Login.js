@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
 
 import * as Constants from "../common/CommonUtils";
-import * as Message from "../core/message";
+import * as Message from "../common/message";
 
 class Login extends React.Component {
 
