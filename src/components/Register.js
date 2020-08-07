@@ -13,16 +13,11 @@ function OptionHotel ({data}) {
     data.map((element, index) => {
         items.push(
             <option key={element} value={element}>{element}</option> 
-
-                
         )
     });
 
     return items;
 }
-
-
-
 
 class Register extends React.Component {
 
@@ -85,15 +80,6 @@ class Register extends React.Component {
             Message.Warning("Bạn chưa điền tên khách sạn");
             return;
         }
-
-        console.log(this.state.name);
-        console.log(this.state.address);
-        console.log(this.state.email);
-        console.log(this.state.gender);
-        console.log(this.state.hotelName);
-
-        
-
 
         const requestOptions = {
             method: 'POST',
@@ -194,7 +180,7 @@ class Register extends React.Component {
                                                 <OptionHotel data={this.state.hotelNames} />
                                         
                                             </select>
-                                      </div>
+                                    </div>
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="icheck-primary">
