@@ -9,6 +9,7 @@ import MyRedirect from './module/Redirect';
 import NoMatch from './nomatch/NoMatch';
 import Register from "./components/Register";
 import AccountManagement from "./components/AccountManagement";
+import StaffManagement from "./components/StaffManagement";
 // import Footer from './components/Footer';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ function App() {
 			  	<Route exact 	path="/" 				component={Login} />
 			  	<Route exact    path="/404"             component={NoMatch} />
 			  	<Route exact	path="/register"		component={Register} />
+			  	<Route exact path="/staff" component={StaffManagement}/>
 			  	<Route exact	path="/account">
             		<AccountManagement/>
             	</Route>
@@ -35,6 +37,8 @@ function App() {
 			    <Route          path="*">
 		            <Redirect to="/404" />
 		        </Route>
+		        
+
 
 			</Switch>
 		</main>
